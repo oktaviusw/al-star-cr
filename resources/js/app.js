@@ -1,4 +1,5 @@
 require('./bootstrap');
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
 
 // require('jquery');
 // require('bootstrap');

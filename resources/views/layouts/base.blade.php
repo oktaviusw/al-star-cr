@@ -13,45 +13,38 @@
 <body>
     <!-- Header Fixed On Top-->
     <nav id="navbar_floating" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top"
-        style="background-color: #33339b !important;">
+        style="background-color: #330190 !important;">
         <a class="navbar-brand" href="#">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/LaravelLogo.png/800px-LaravelLogo.png"
                 style="object-fit: contain; width: 3em;" alt="">
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarFoldTop"
+            aria-controls="navbarFoldTop" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Stories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Article</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Careers</a>
-                    </li>
-                </ul>
+        <div class="collapse navbar-collapse" id="navbarFoldTop">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/posts">Stories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Article</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Careers</a>
+                </li>
             </ul>
-            <!-- <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="fa fa-search"
-                        aria-hidden="true"></i></button>
-            </form> -->
         </div>
     </nav>
     <!-- Header Fixed On Top-->
@@ -69,10 +62,10 @@
             <div class="row bg-dark text-white mt-2 pt-2 pb-2" style="border-radius: 0.3em;">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Home</a>
+                        <a class="nav-link text-light" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Stories</a>
+                        <a class="nav-link text-light" href="/posts">Stories</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="#">Article</a>
@@ -90,7 +83,10 @@
             </div>
         </div>
         <!-- Header On Container-->
-        
+        @isset($breadcrumbs)
+            @include('include.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
+        @endisset
+        @include('include.messages')
         @yield('content')
     </div>
 
@@ -198,12 +194,15 @@
     <!-- Footer -->
 
     <!-- Scroll To Top Button -->
-    <a id="btn-back-to-top" href="#" class="btn btn-lg text-light" style="background-color: #33339b !important; position: fixed; bottom: 25px; right: 25px;" role="button">
+    <a id="btn-back-to-top" href="#" class="btn btn-lg text-light" style="background-color: #330190 !important; position: fixed; bottom: 25px; right: 25px;" role="button">
         <i class="fa fa-chevron-up" aria-hidden="true"></i>
     </a>
     <!-- Scroll To Top Button -->
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    @yield('js')
 
     <script>
         $(document).ready(function () {

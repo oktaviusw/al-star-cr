@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->mediumText('body');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
